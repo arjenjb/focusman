@@ -1,0 +1,13 @@
+#!/bin/sh
+# Resolve installed symlinks, then launch the executable in this app bundle.
+launcher_path=$0
+while [ -L "$launcher_path" ]; do
+    launcher_dir=$(CDPATH= cd -P -- "$(dirname -- "$launcher_path")" && pwd) || exit 1
+    launcher_path=$(readlink "$launcher_path") || exit 1
+    case "$launcher_path" in
+        /*) ;;
+        *) launcher_path="$launcher_dir/$launcher_path" ;;
+    esac
+done
+launcher_dir=$(CDPATH= cd -P -- "$(dirname -- "$launcher_path")" && pwd) || exit 1
+exec "$launcher_dir/../MacOS/Focusman" "$@"

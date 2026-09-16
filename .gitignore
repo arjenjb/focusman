@@ -1,0 +1,20 @@
+.DS_Store
+.build/
+build/
+dist/
+__pycache__/
+*.pyc
+
+# Local credentials and signing material
+.env
+.env.*
+.signing-identity
+*.p12
+*.pfx
+*.p8
+*.pem
+*.key
+*.keychain
+*.keychain-db
+*.mobileprovision
+*.provisionprofile

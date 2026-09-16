@@ -1,0 +1,30 @@
+version: 2
+project_name: focusman
+
+# Swift builds the app; GoReleaser OSS handles archiving and releases.
+before:
+  hooks:
+    - 'bash Scripts/release.sh {{ .Major }}.{{ .Minor }}.{{ .Patch }} {{ .IsSnapshot }}'
+
+builds:
+  - skip: true
+
+archives:
+  - id: macos-app
+    meta: true
+    formats: [zip]
+    name_template: 'Focusman_{{ .Version }}_macOS_universal'
+    files:
+      - src: build/Focusman.app
+        dst: Focusman.app
+      - README.md
+
+checksum:
+  name_template: checksums.txt
+  algorithm: sha256
+
+changelog:
+  sort: asc
+
+release:
+  prerelease: auto
