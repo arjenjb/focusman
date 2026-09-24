@@ -5,7 +5,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let overlays: OverlayController
     private let tracker = FrontWindowTracker()
 
-    private let intensitySteps: [Double] = [0.25, 0.40, 0.55, 0.70, 0.85]
+    private let intensitySteps: [Double] = [0.25, 0.40, 0.55, 0.70, 0.85, 0.90]
 
     init(options: LaunchOptions) {
         overlays = OverlayController(quitOnBackgroundClick: options.quitOnBackgroundClick)
